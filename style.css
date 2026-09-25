@@ -15,6 +15,35 @@ body {
     line-height: 1.6;
 }
 
+img {
+    max-width: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -24,8 +53,10 @@ nav {
 
     position: sticky;
     top: 0;
+    z-index: 100;
 
     background: #0f172a;
+    border-bottom: 1px solid #1e293b;
 }
 
 nav h2 {
@@ -36,10 +67,28 @@ nav a {
     color: white;
     text-decoration: none;
     margin-left: 25px;
+    transition: color 0.2s ease;
 }
 
 nav a:hover {
     color: #38bdf8;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: white;
+    display: block;
 }
 
 .hero {
@@ -49,12 +98,17 @@ nav a:hover {
     align-items: center;
 
     padding: 0 8%;
+
+    background:
+        radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.12), transparent 45%),
+        #0f172a;
 }
 
 .small-title {
     color: #38bdf8;
     letter-spacing: 3px;
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .hero h1 {
@@ -85,6 +139,13 @@ nav a:hover {
     font-weight: bold;
 
     border-radius: 6px;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
 }
 
 section {
@@ -94,6 +155,18 @@ section {
 section h2 {
     font-size: 36px;
     margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #38bdf8;
+    margin-bottom: 14px;
+    border-radius: 2px;
 }
 
 section p {
@@ -108,6 +181,8 @@ section p {
     grid-template-columns: repeat(3, 1fr);
 
     gap: 25px;
+
+    margin-top: 40px;
 }
 
 .skill,
@@ -117,11 +192,12 @@ section p {
     padding: 25px;
 
     border-radius: 10px;
+    border: 1px solid transparent;
 
     display: flex;
     flex-direction: column;
 
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .skill h3,
@@ -132,6 +208,7 @@ section p {
 
 .project:hover {
     transform: translateY(-8px);
+    border-color: #38bdf8;
 }
 
 .project-number {
@@ -150,6 +227,7 @@ section p {
     gap: 8px;
 
     margin-top: auto;
+    padding-top: 15px;
 }
 
 .project-tags span {
@@ -163,41 +241,55 @@ section p {
     font-size: 12px;
 }
 
-.project-link {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.project-link:hover {
-    text-decoration: underline;
+#contact .contact-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 #contact a {
     color: #38bdf8;
-    margin-right: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+#contact a:hover {
+    color: #7dd3fc;
+    text-decoration: underline;
 }
 
 footer {
     text-align: center;
     padding: 30px;
     color: #64748b;
+    border-top: 1px solid #1e293b;
 }
 
 
 @media (max-width: 768px) {
 
-    nav {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
         flex-direction: column;
-        gap: 15px;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    nav {
+        flex-wrap: wrap;
     }
 
     nav a {
-        margin: 0 8px;
+        margin: 10px 0 0 0;
     }
 
     .hero h1 {
