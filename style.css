@@ -117,6 +117,11 @@ section p {
     padding: 25px;
 
     border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: transform 0.3s ease;
 }
 
 .skill h3,
@@ -125,9 +130,51 @@ section p {
     color: #38bdf8;
 }
 
-.project p:last-child {
-    margin-top: 15px;
+.project:hover {
+    transform: translateY(-8px);
+}
+
+.project-number {
+    color: #64748b;
     font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.project p {
+    margin-bottom: 5px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: auto;
+}
+
+.project-tags span {
+    padding: 5px 10px;
+
+    background: #0f172a;
+    color: #94a3b8;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+}
+
+.project-link {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-link:hover {
+    text-decoration: underline;
 }
 
 #contact a {
