@@ -241,6 +241,21 @@ section p {
     font-size: 12px;
 }
 
+.project-link {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: #d4a574;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-link:hover {
+    color: #e0b98a;
+    text-decoration: underline;
+}
+
 #contact .contact-links {
     margin-top: 20px;
     display: flex;
